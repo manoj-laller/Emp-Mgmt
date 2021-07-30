@@ -1,0 +1,64 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Manoj Laller",
+      "phone": "998876117",
+      "email": "manoj@laller.com",
+      "sex": "M",
+      "designation": "Tech Lead",
+      "dob": "2021-06-30T18:30:00.000Z",
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Haimi Laller 3",
+      "phone": "9988761172",
+      "email": "manoj2@laller.com",
+      "sex": "M",
+      "designation": "Tech Lead 2",
+      "dob": "2021-03-31T18:30:00.000Z",
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Haimi Laller 4",
+      "phone": "9988761172",
+      "email": "manoj2@laller.com",
+      "sex": "M",
+      "designation": "Tech Lead 2",
+      "dob": "2021-03-31T18:30:00.000Z",
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "Manoj Laller 2",
+      "phone": "998876117",
+      "email": "manoj@laller.com",
+      "sex": "M",
+      "designation": "Tech Lead",
+      "dob": "2021-06-30T18:30:00.000Z",
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Tinku",
+      "phone": "998876117",
+      "email": "manoj@laller.com",
+      "sex": "M",
+      "designation": "Tech Lead",
+      "dob": "2021-06-30T18:30:00.000Z",
+      "active": true
+    },
+    {
+      "id": 11,
+      "name": "Haimi Laller 4 4",
+      "phone": "9988761172",
+      "email": "manoj2@laller.com",
+      "sex": "M",
+      "designation": "Tech Lead 2",
+      "dob": "2021-03-31T18:30:00.000Z",
+      "active": true
+    }
+  ]
+}

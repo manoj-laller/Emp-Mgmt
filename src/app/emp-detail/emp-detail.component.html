@@ -1,0 +1,48 @@
+<mat-card class="example-container">
+  <mat-card-title><span *ngIf="emp.id != null">Edit</span><span *ngIf="emp.id == null">Add</span> Employee</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-label *ngIf="emp.id != null">
+        Id: {{emp.id}}</mat-label>
+      <mat-form-field >
+        <input matInput type="text" placeholder="Name" formControlName="name">
+        <mat-error>
+          Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field >
+        <input matInput type="email" placeholder="Email" formControlName="email">
+        <mat-error *ngIf="validCheck('email', 'required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="validCheck('email', 'email')">
+          Please enter valid email address
+        </mat-error>
+      </mat-form-field>
+     <mat-form-field >
+        <input matInput placeholder="Phone" formControlName="phone">
+        <mat-error>
+          Invalid Phone number
+        </mat-error>
+      </mat-form-field>
+      <mat-label>Sex: </mat-label>
+      <mat-radio-group formControlName="sex">
+        <mat-radio-button value="M">Male</mat-radio-button>
+        <mat-radio-button value="F">Female</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field appearance="fill">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="dp1" formControlName="dob">
+        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+        <mat-datepicker #dp1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Designation" formControlName="designation">
+      </mat-form-field>
+      <mat-checkbox matInput formControlName="active">Active</mat-checkbox>
+      <br/><br/>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">Save</button> &nbsp;
+      <button mat-raised-button (click)="exit()" color="primary">Cancel</button>
+    </form>
+  </mat-card-content>
+</mat-card>
