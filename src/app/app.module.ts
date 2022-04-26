@@ -31,8 +31,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule  } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ConfirmComponent } from './confirm/confirm.component'
-;
+import { ConfirmComponent } from './confirm/confirm.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { ConfirmComponent } from './confirm/confirm.component'
     LoginComponent,
     NotFoundComponent,
     HomeComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    CustomPaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { ConfirmComponent } from './confirm/confirm.component'
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

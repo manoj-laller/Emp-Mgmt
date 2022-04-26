@@ -4,7 +4,12 @@
     <button mat-raised-button color="primary">
       <mat-icon>add</mat-icon> Add Employee
    </button> </a>
-    <table mat-table [dataSource]="EmployeeList" class="mat-elevation-z8">
+   <custom-paginator [recordCount]="totalRecords"
+   [pageSize]="pageSize"
+   [pageSizeOptions]="[5, 10, 25, 100]"
+   [pageIndex]="newPageIndex"
+   (onPageChange)="onPageChanged($event)" ></custom-paginator>
+    <table mat-table [dataSource]="activePageDataChunk" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -50,6 +55,18 @@
       <tr mat-header-row *matHeaderRowDef="DisplayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: DisplayedColumns;"></tr>
     </table>
+    <custom-paginator [recordCount]="totalRecords"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [pageIndex]="newPageIndex"
+    (onPageChange)="onPageChanged($event)" ></custom-paginator>
+    <mat-paginator #paginator
+    [length]="recordCount"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+    aria-label="Select page" (page)="onPageChanged($event)">
+</mat-paginator>
   </mat-card-content>
 </mat-card>
 <br/>

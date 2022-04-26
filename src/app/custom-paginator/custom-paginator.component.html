@@ -1,0 +1,19 @@
+<mat-card class="pager-container">
+  <mat-card-content>
+    <mat-form-field >
+      <input matInput type="number" min="1" [max]="totalPages" [value]="pageIndex + 1" (change)="change($event)" ></mat-form-field> &nbsp;
+      <mat-form-field >
+      <mat-select [value]="pageSize" (selectionChange)="selectionChanged($event)">
+        <mat-option *ngFor="let opt of pageSizeOptions" [value]="opt">
+          {{opt}}
+        </mat-option>
+      </mat-select>  </mat-form-field> &nbsp;
+      <button mat-raised-button [disabled]="pageIndex == 0" (click)="switchPage(0)" color="primary">First</button>
+      <button mat-raised-button [disabled]="pageIndex == 0" (click)="switchPage(pageIndex-1)" color="primary">Prev</button>
+      <button mat-raised-button *ngFor="let val of pageRange | async" [disabled]="pageIndex == val" (click)="switchPage(val)">{{val + 1}}</button>
+      <span *ngIf="showDots" >...</span>
+      <button mat-raised-button *ngIf="totalPages > 0" [disabled]="pageIndex + 1 >= totalPages" (click)="switchPage(totalPages-1)">{{totalPages}}</button>
+      <button mat-raised-button [disabled]="pageIndex + 1 >= totalPages" (click)="switchPage(pageIndex + 1)" color="primary">Next</button>
+      <button mat-raised-button [disabled]="pageIndex + 1 >= totalPages" (click)="switchPage(totalPages-1)" color="primary">Last</button>
+  </mat-card-content>
+</mat-card>

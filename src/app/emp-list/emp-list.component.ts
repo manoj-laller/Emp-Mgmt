@@ -5,6 +5,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ConfirmComponent } from '../confirm/confirm.component';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 
 
@@ -17,6 +18,18 @@ export class EmpListComponent implements OnInit {
 
   DisplayedColumns: string[] = ['Id', 'Name', 'Phone', 'Email', 'Designation', 'Action'];
   EmployeeList : Emp[];
+
+    // MatPaginator Output
+    pageEvent: PageEvent;
+
+    recordCount: string;
+
+    totalRecords: number = 0;
+    newPageIndex: number = 0;
+    pageSize: number = 5;
+
+    activePageDataChunk = []
+
   constructor(private empService : EmpService,
     private snackBar: MatSnackBar,
     private router: Router,
@@ -25,14 +38,30 @@ export class EmpListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
     this.loadEmployees();
   }
 
-  loadEmployees()
+  onPageChanged(e) {
+    let firstCut = e.pageIndex * e.pageSize;
+    let secondCut = firstCut + e.pageSize;
+    if(this.pageSize != e.pageSize){
+      this.pageSize = e.pageSize;
+    }
+    this.loadEmployees(firstCut, secondCut);
+    this.newPageIndex = e.pageIndex;
+
+    //this.activePageDataChunk = this.EmployeeList.slice(firstCut, secondCut);
+  }
+
+  loadEmployees(from :number = 0, to: number = 5)
   {
     this.empService.getEmployees().subscribe(x =>
       {
         this.EmployeeList = x;
+        this.totalRecords = this.EmployeeList.length;
+        this.recordCount = this.EmployeeList.length.toString();
+        this.activePageDataChunk = this.EmployeeList.slice(from, to);
       }
     );
   }
@@ -54,12 +83,7 @@ export class EmpListComponent implements OnInit {
           });
         }
       });
-
-
   }
-
-
-
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
