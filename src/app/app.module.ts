@@ -34,6 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.component';
+import { MatSortModule } from '@angular/material/sort';
+import { StylePaginatorDirective } from './style-paginator.directive';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.co
     NotFoundComponent,
     HomeComponent,
     ConfirmComponent,
-    CustomPaginatorComponent
+    CustomPaginatorComponent,
+    StylePaginatorDirective
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.co
     MatNativeDateModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
